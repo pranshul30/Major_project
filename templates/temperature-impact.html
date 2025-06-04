@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temperature Impact on Forest Fires</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      background-color: #34495e;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+
+    main {
+      margin-top: 25px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    main h2 {
+      margin-bottom: 15px;
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+
+    main h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #34495e;
+    }
+
+    main p {
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 600px) {
+      nav {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      nav a {
+        padding: 10px 20px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main {
+        max-width: 800px;
+        margin: 30px auto 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Temperature Impact on Forest Fires</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('weather_fires') }}">Weather Impact</a>
+      <a href="{{ url_for('fire_indices') }}">Fire Indices</a>
+    </nav>
+  </header>
+  <main>
+    <h2>How Temperature Affects Forest Fires</h2>
+    <p>Temperature plays a crucial role in the likelihood and intensity of forest fires. Elevated temperatures contribute to drier conditions, increasing the risk of ignition and spread.</p>
+
+    <h3>1. Drying Vegetation</h3>
+    <p>High temperatures cause plants, leaves, and other organic materials to lose moisture, turning them into highly flammable fuel.</p>
+
+    <h3>2. Heat and Ignition</h3>
+    <p>Heat waves and prolonged exposure to sunlight can raise surface temperatures, making it easier for fires to ignite from sparks or lightning.</p>
+
+    <h3>3. Influence on Wind Patterns</h3>
+    <p>Temperature differences create strong winds, which can fan flames and accelerate the spread of fires.</p>
+
+    <h3>4. Impact on Fire Behavior</h3>
+    <p>Fires in hotter conditions often burn more intensely and spread rapidly, making firefighting efforts more challenging.</p>
+
+    <h3>Conclusion</h3>
+    <p>Monitoring temperature trends can help predict fire-prone periods, enabling authorities to take preventive measures and reduce disaster risks.</p>
+  </main>
+</body>
+</html>

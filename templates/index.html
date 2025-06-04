@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Forest Fire Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f7fafc;
+      color: #2d3748;
+      line-height: 1.6;
+      font-size: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1.25rem 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      user-select: none;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* Buttons */
+    .button {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      color: white;
+      padding: 14px 2.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 12px rgba(41, 128, 185, 0.5);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      border: none;
+      text-align: center;
+      width: auto;
+      min-width: 160px;
+    }
+    .button:hover,
+    .button:focus {
+      background: linear-gradient(135deg, #2572a8 0%, #1f5f8c 100%);
+      box-shadow: 0 8px 16px rgba(31, 95, 140, 0.7);
+      transform: translateY(-3px);
+      outline: none;
+    }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('static/images/pic.jpg') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      min-height: 450px;
+    }
+    .hero h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      max-width: 900px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.6);
+    }
+    /* Section Styling */
+    .section {
+      padding: 4rem 1rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      color: #2d3748;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #1a202c;
+    }
+    .section p {
+      font-size: 1.125rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #4a5568;
+      line-height: 1.7;
+    }
+    /* Factors Section */
+    .factors {
+      background-color: #e2e8f0;
+      padding-top: 3rem;
+      padding-bottom: 4rem;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .card {
+      background-color: white;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 320px;
+      max-width: 90vw;
+      padding: 1.75rem 1.5rem 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      color: #2d3748;
+      text-align: left;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: #2c3e50;
+    }
+    .card p {
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #718096;
+    }
+    /* Button Spacers */
+    .button-spacer {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        height: auto;
+        min-height: 400px;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .hero h2 {
+        font-size: clamp(1.8rem, 6vw, 3.5rem);
+      }
+      .hero p {
+        font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+      }
+      .card-container {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 768px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+      }
+      .button {
+        padding: 12px 2rem;
+        font-size: 1rem;
+        min-width: 100%;
+        max-width: 320px;
+      }
+      .button-spacer {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+      header .container h1 {
+        font-size: 1.5rem;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+      }
+      .card h3 {
+        font-size: 1.4rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+      }
+      .button {
+        padding: 12px 1.5rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Forest Fire Prediction</h1>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="Introduction">
+    <h2>Understanding Forest Fires</h2>
+    <p>Learn about the impact of forest fires in Algeria and how prediction models can help mitigate risks.</p>
+    <a href="/predictdata" class="button" role="button" tabindex="0">Try the Prediction Tool</a>
+    <h2 style="margin-top: 2.5rem;">Custom Dataset Model</h2>
+    <a href="/predict_fire_danger" class="button" role="button" tabindex="0">Custom Prediction Tool</a>
+  </section>
+
+  <section class="section" aria-label="The Challenge and Our Solution">
+    <h2>The Challenge</h2>
+    <p>
+      Forest fires in Algeria pose significant environmental, economic, and social challenges. They devastate natural ecosystems, threaten wildlife habitats, and contribute to air pollution, exacerbating climate change. Additionally, these fires pose severe risks to human life and property, straining firefighting resources and emergency response systems.
+    </p>
+    <h2>Our Solution</h2>
+    <p>
+      Using machine learning and environmental data, we predict the Fire Weather Index (FWI) to aid in prevention and resource allocation.
+    </p>
+  </section>
+
+  <section class="section factors" aria-label="Key Factors in Fire Prediction">
+    <h2>Key Factors in Fire Prediction</h2>
+    <div class="card-container">
+      <a href="{{ url_for('weather_fires') }}" class="card" target="_blank" rel="noopener noreferrer" aria-label="Learn about Weather Conditions" tabindex="0">
+        <h3>Weather Conditions</h3>
+        <p>Temperature, humidity, wind speed, and rainfall impact fire risk. Learn more about how weather influences forest fires.</p>
+      </a>
+      <a href="{{ url_for('fire_indices') }}" class="card" target="_blank" rel="noopener noreferrer" aria-label="Learn about Fire Indices" tabindex="0">
+        <h3>Fire Indices</h3>
+        <p>FFMC, DMC, and ISI are critical fire behavior metrics. Discover how these indices help predict forest fires.</p>
+      </a>
+      <a href="{{ url_for('temperature_impact') }}" class="card" target="_blank" rel="noopener noreferrer" aria-label="Learn about Temperature Impact" tabindex="0">
+        <h3>Temperature</h3>
+        <p>Higher temperatures create drier conditions, increasing the likelihood of forest fires. Read more about the effects of extreme heat.</p>
+      </a>
+    </div>
+    <div class="button-spacer">
+      <a href="/predictdata" class="button" role="button" tabindex="0">Try the Prediction Tool for Algerian Dataset</a>
+      <a href="/predict_fire_danger" class="button" role="button" tabindex="0">Try the Custom Dataset Prediction</a>
+    </div>
+  </section>
+
+</body>
+</html>
