@@ -1,0 +1,139 @@
+/* Custom Stylesheet */
+/* Made By MaterializeCSS.com */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+a {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #2980b9;
+}
+
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #3498db;
+}
+
+footer {
+  margin-top: 40px;
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Materialize-Specific Overrides */
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+.bg-logo {
+  background: url("{{ url_for('static', filename='forest_conserv.png') }}");
+  background-size: 100% 100%;
+  height: 300px;
+  background-size: cover;
+}
+
+/* Form Enhancements */
+.input-field input[type=number] {
+  border-bottom: 1px solid #0277bd;
+  box-shadow: none;
+}
+
+.input-field input[type=number]:focus {
+  border-bottom: 2px solid #0288d1;
+  box-shadow: 0 1px 0 0 #0288d1;
+}
+
+label {
+  color: #01579b;
+  font-weight: 500;
+}
+
+/* Button Styling */
+.btn-large {
+  background-color: #0288d1 !important;
+  border-radius: 30px;
+  padding: 0 2rem;
+  font-weight: bold;
+}
+
+.btn-large:hover {
+  background-color: #0277bd !important;
+}
+
+/* Centered Result */
+.row.center h5 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+/* Card or Main Section */
+main {
+  width: 90%;
+  margin: 40px auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Fade-In */
+.container {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Forest Fire Prediction</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static', filename='css2/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+   
+  <nav class="teal darken-2" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="{{ url_for('home') }}" class="menu">HOME</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+    </ul>
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center blue-text">Forest Fire Prediction</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Predict the probability of forest fire occurrence</h5>
+      </div>
+
+      <div class="row">
+        <form action="/predict_fire_danger" method="post" class="col s12">
+          <div class="row">
+            <div class="input-field col s4">
+              <input placeholder="Temperature in Celsius" name="Temperature" id="temperature" type="number" step="any" required>
+              <label for="temperature"><b>Temperature</b></label>
+            </div>
+            <div class="input-field col s4">
+              <input id="oxygen" name="Oxygen" placeholder="Oxygen content in ppm" type="number" step="any" required>
+              <label for="oxygen"><b>Oxygen</b></label>
+            </div>
+            <div class="input-field col s4">
+              <input id="humidity" name="Humidity" placeholder="Humidity %" type="number" step="any" required>
+              <label for="humidity"><b>Humidity</b></label>
+            </div>
+          </div>
+
+          <div class="row center">
+            <button type="submit" class="btn-large waves-effect waves-light red">Predict Probability</button>
+          </div>
+        </form>
+      </div>
+
+      {% if pred %}
+      <div class="row center">
+        <h5 class="blue-text">{{ pred }}</h5>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer class="page-footer grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <p class="grey-text text-lighten-4">Prediction powered by Machine Learning</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <span class="right">© 2025 Forest Fire Prediction</span>
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+
+</body>
+</html>

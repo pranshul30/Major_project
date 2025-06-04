@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding Fire Indices</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Understanding Fire Indices</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('weather_fires') }}">Weather Impact</a>
+      <a href="{{ url_for('temperature_impact') }}">Temperature Impact</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Understanding Fire Indices and Their Role in Fire Prediction</h2>
+    <p>Fire indices are mathematical models used to estimate the likelihood of forest fires. They are essential in predicting and preventing wildfires.</p>
+
+    <h3>1. FFMC (Fine Fuel Moisture Code)</h3>
+    <p>The FFMC measures the moisture content of surface litter and fine fuels. A low FFMC indicates moist conditions, while a high FFMC suggests dry, flammable fuel.</p>
+
+    <h3>2. DMC (Duff Moisture Code)</h3>
+    <p>DMC represents the moisture level of decomposed organic material. It is used to predict how deep a fire could penetrate the forest floor.</p>
+
+    <h3>3. ISI (Initial Spread Index)</h3>
+    <p>ISI assesses the potential rate of fire spread based on wind speed and FFMC. High ISI values indicate rapid fire spread.</p>
+
+    <h3>Conclusion</h3>
+    <p>Fire indices are key indicators used by firefighting agencies to allocate resources efficiently and issue warnings in high-risk areas.</p>
+
+  </main>
+ 
+</body>
+</html>

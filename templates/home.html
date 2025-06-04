@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Weather Index Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body, html {
+
+            display: flex;
+            flex-direction: column;
+            background-image: url('static/images/res.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #0f0f0e;
+            text-align: center;
+             
+        }
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        form {
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            padding: 10px 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-bottom: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .fwi-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Fire Weather Index (FWI) Calculator</h2>
+    <form action="{{url_for('predict_data')}}" method="POST">
+        <input type="number" name="Temperature" placeholder="Temperature (°C)" step="any" required>
+        <input type="number" name="RH" placeholder="Relative Humidity (%)" step="any" required>
+        <input type="number" name="Ws" placeholder="Wind Speed (km/h)" step="any" required>
+        <input type="number" name="Rain" placeholder="Rainfall (mm)" step="any" required>
+        <input type="number" name="FFMC" placeholder="FFMC (Fuel Moisture Content)" step="any" required>
+        <input type="number" name="DMC" placeholder="DMC (Duff Moisture)" step="any" required>
+        <input type="number" name="ISI" placeholder="ISI(Initial Spread Index)" step="any" required>
+        
+        
+       
+        <button type="submit">Calculate FWI</button>
+    </form>
+
+</body>
+</html>
