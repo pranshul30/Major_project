@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import warnings
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template ,redirect,url_for
 
 from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.model_selection import train_test_split
@@ -87,6 +87,11 @@ def custom_model():
 @app.route('/')
 def home():
     return render_template("index.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('home'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
