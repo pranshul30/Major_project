@@ -88,10 +88,15 @@ def custom_model():
 def home():
     return render_template("index.html")
 
+@app.route('/predictdata')
+def fp():
+    return render_template("home.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return redirect(url_for('home'))
+    return render_template('error.html'), 404
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
