@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page Not Found</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 8rem;
+      font-weight: 900;
+      margin: 0;
+      position: relative;
+      animation: pulse 2s infinite;
+      text-shadow: 0 0 20px #ff6b6b;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin: 20px 0 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 0 0 30px;
+      max-width: 400px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a {
+      background: #fff;
+      color: #764ba2;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    a:hover {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      box-shadow: none;
+    }
+
+    /* Pulse animation for 404 */
+    @keyframes pulse {
+      0%, 100% {
+        text-shadow: 0 0 20px #ff6b6b;
+      }
+      50% {
+        text-shadow: 0 0 40px #ff4757;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 5rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 1rem;
+        max-width: 300px;
+      }
+      .btn-group {
+        flex-direction: column;
+        gap: 15px;
+      }
+      a {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>404</h1>
+  <h2>Oops! Page Not Found</h2>
+  <p>The page you're looking for doesn't exist or may have been moved.</p>
+
+  <div class="btn-group">
+    <a href="{{ url_for('index') }}">Go Back Home</a>
+    <a href="{{ url_for('fp') }}">Go To Main Model</a>
+    <a href="{{ url_for('custom_model') }}">Go To Custom Prediction</a>
+  </div>
+</body>
+</html>
