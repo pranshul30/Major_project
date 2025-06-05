@@ -104,7 +104,7 @@ The final model was selected based on evaluation metrics like **Mean Squared Err
 ## Future Enhancements
 - Integrate real-time weather data using external APIs.
 - Implement additional regions.
-- Deploy the application using Docker.
+- Deploy the application.
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
