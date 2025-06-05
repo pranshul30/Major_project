@@ -14,18 +14,27 @@ warnings.filterwarnings("ignore")
 app = Flask(__name__)
 
 # --------- MODEL 1: Logistic Regression for Forest Fire Danger ---------
+# Check if model exists
 if not os.path.exists("model1.pkl"):
     data = pd.read_csv("Forest_fire.csv")
+    data = np.array(data)
 
-    # Selecting only the required 7 features
-    feature_cols = ['Temperature', 'RH', 'Ws', 'Rain', 'FFMC', 'DMC', 'ISI']
-    X = data[feature_cols].values  # Use only the 7 features
-    y = data['Classes'].apply(lambda x: 1 if x == 'fire' else 0).values  # Convert 'fire'/'not fire' to 1/0
+    # Extract features and target
+    X = data[1:, 1:-1]   # Skip header row, take columns 1 to second-last
+    y = data[1:, -1]     # Last column is 'Classes'
 
+    # Convert to integers
+    X = X.astype('int')
+    y = y.astype('int')
+
+    # Split into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
+    # Train logistic regression model
     log_reg = LogisticRegression()
     log_reg.fit(X_train, y_train)
+
+    # Save model
     pickle.dump(log_reg, open('model1.pkl', 'wb'))
 
 model1 = pickle.load(open('model1.pkl', 'rb'))  # Forest fire classifier
